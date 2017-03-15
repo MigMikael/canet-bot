@@ -2,7 +2,7 @@
 
 // Todo change this when commit to heroku
 
-/*return [
+return [
     'fetch' => PDO::FETCH_CLASS,
     'default' => env('DB_CONNECTION', 'mysql'),
     'connections' => [
@@ -18,6 +18,40 @@
             'prefix' => '',
             'strict' => false,
             'engine' => null,
+        ],
+    ],
+    'migrations' => 'migrations',
+    'redis' => [
+        'cluster' => false,
+        'default' => [
+            'host' => env('REDIS_HOST', 'localhost'),
+            'password' => env('REDIS_PASSWORD', null),
+            'port' => env('REDIS_PORT', 6379),
+            'database' => 0,
+        ],
+    ],
+];
+
+/*$url = parse_url(getenv("DATABASE_URL"));
+$host = $url["host"];
+$username = $url["user"];
+$password = $url["pass"];
+$database = substr($url["path"], 1);
+
+return [
+    'fetch' => PDO::FETCH_CLASS,
+    'default' => 'pgsql',
+    'connections' => [
+        'pgsql' => [
+            'driver' => 'pgsql',
+            'host' => $host,
+            'port' => 5432,
+            'database' => $database,
+            'username' => $username,
+            'password' => $password,
+            'charset' => 'utf8',
+            'prefix' => '',
+            'schema' => 'public',
         ],
     ],
     'migrations' => 'migrations',
@@ -67,37 +101,3 @@ return [
         ],
     ],
 ];*/
-
-$url = parse_url(getenv("DATABASE_URL"));
-$host = $url["host"];
-$username = $url["user"];
-$password = $url["pass"];
-$database = substr($url["path"], 1);
-
-return [
-    'fetch' => PDO::FETCH_CLASS,
-    'default' => 'pgsql',
-    'connections' => [
-        'pgsql' => [
-            'driver' => 'pgsql',
-            'host' => $host,
-            'port' => 5432,
-            'database' => $database,
-            'username' => $username,
-            'password' => $password,
-            'charset' => 'utf8',
-            'prefix' => '',
-            'schema' => 'public',
-        ],
-    ],
-    'migrations' => 'migrations',
-    'redis' => [
-        'cluster' => false,
-        'default' => [
-            'host' => env('REDIS_HOST', 'localhost'),
-            'password' => env('REDIS_PASSWORD', null),
-            'port' => env('REDIS_PORT', 6379),
-            'database' => 0,
-        ],
-    ],
-];

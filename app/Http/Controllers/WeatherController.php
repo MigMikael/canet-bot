@@ -13,6 +13,17 @@ class WeatherController extends Controller
         return view('index', ['weathers' => $weathers]);
     }
 
+    public function apiDoc()
+    {
+        return view('api');
+    }
+
+    public function graph()
+    {
+        $weathers = Weather::all();
+        return view('graph', ['weathers' => $weathers]);
+    }
+
     public function getDailyWeather($day)
     {
         $day = 'http://api.wunderground.com/api/2702e742f41cb897/history_201703'.$day.'/q/TH/Bangkok.json';
@@ -39,7 +50,7 @@ class WeatherController extends Controller
 
         foreach ($days as $day){
             $data = self::curlGetRequest($day);
-            //Log::info("##### ".$data['history']['dailysummary'][0]['meantempm']);
+
             $weather = [
                 'temp' => $data['history']['dailysummary'][0]['meantempm'],
                 'max_temp' => $data['history']['dailysummary'][0]['maxtempm'],

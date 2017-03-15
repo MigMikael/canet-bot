@@ -12,10 +12,12 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->action('WeatherController@index');
 });
 
 Route::get('weather', 'WeatherController@index');
+Route::get('api', 'WeatherController@apiDoc');
+Route::get('graph', 'WeatherController@graph');
 
 Route::get('get_weather', 'WeatherController@getWeather');
 Route::get('get_daily_weather/{day}', 'WeatherController@getDailyWeather');
