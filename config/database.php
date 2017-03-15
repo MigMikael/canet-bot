@@ -2,7 +2,7 @@
 
 // Todo change this when commit to heroku
 
-return [
+/*return [
     'fetch' => PDO::FETCH_CLASS,
     'default' => env('DB_CONNECTION', 'mysql'),
     'connections' => [
@@ -30,9 +30,9 @@ return [
             'database' => 0,
         ],
     ],
-];
+];*/
 
-/*$url = parse_url(getenv("DATABASE_URL"));
+$url = parse_url(getenv("DATABASE_URL"));
 $host = $url["host"];
 $username = $url["user"];
 $password = $url["pass"];
@@ -64,7 +64,7 @@ return [
             'database' => 0,
         ],
     ],
-];*/
+];
 
 /*$url = parse_url(getenv("CLEARDB_DATABASE_URL"));
 $host = $url["host"];
