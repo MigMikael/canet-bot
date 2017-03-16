@@ -10,7 +10,7 @@ class ProcessImageController extends Controller
     public function index()
     {
         $process_images = ProcessImage::all();
-        return view('process_image', ['process_image' => $process_images]);
+        return view('process_image', ['process_images' => $process_images]);
     }
 
     public function store(Request $request)
@@ -20,7 +20,7 @@ class ProcessImageController extends Controller
 
         $process_image = [
             'amount' => $amount,
-            'process_image' => File::get($image)
+            'image' => File::get($image)
         ];
 
         ProcessImage::create($process_image);
