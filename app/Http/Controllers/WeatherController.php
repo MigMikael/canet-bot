@@ -26,7 +26,7 @@ class WeatherController extends Controller
 
     public function getDailyWeather($day)
     {
-        $day = 'http://api.wunderground.com/api/2702e742f41cb897/history_201703'.$day.'/q/TH/Bangkok.json';
+        $day = 'http://api.wunderground.com/api/2702e742f41cb897/history_201703'.$day.'/q/chanthaburi.json';
         $data = self::curlGetRequest($day);
         $weather = [
             'temp' => $data['history']['dailysummary'][0]['meantempm'],
@@ -42,11 +42,11 @@ class WeatherController extends Controller
     public function getWeather()
     {
         $days = [];
-        $days[0] = 'http://api.wunderground.com/api/2702e742f41cb897/history_20170310/q/TH/Bangkok.json';
-        $days[1] = 'http://api.wunderground.com/api/2702e742f41cb897/history_20170311/q/TH/Bangkok.json';
-        $days[2] = 'http://api.wunderground.com/api/2702e742f41cb897/history_20170312/q/TH/Bangkok.json';
-        $days[3] = 'http://api.wunderground.com/api/2702e742f41cb897/history_20170313/q/TH/Bangkok.json';
-        $days[4] = 'http://api.wunderground.com/api/2702e742f41cb897/history_20170314/q/TH/Bangkok.json';
+        $days[0] = 'http://api.wunderground.com/api/2702e742f41cb897/history_20170310/q/TH/chanthaburi.json';
+        $days[1] = 'http://api.wunderground.com/api/2702e742f41cb897/history_20170311/q/TH/chanthaburi.json';
+        $days[2] = 'http://api.wunderground.com/api/2702e742f41cb897/history_20170312/q/TH/chanthaburi.json';
+        $days[3] = 'http://api.wunderground.com/api/2702e742f41cb897/history_20170313/q/TH/chanthaburi.json';
+        $days[4] = 'http://api.wunderground.com/api/2702e742f41cb897/history_20170314/q/TH/chanthaburi.json';
 
         foreach ($days as $day){
             $data = self::curlGetRequest($day);

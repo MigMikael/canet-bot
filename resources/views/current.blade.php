@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="jumbotron">
-        <h1>Weather Condition</h1>
+        <h1>Current Weather</h1>
     </div>
 
     <table class="table table-hover">

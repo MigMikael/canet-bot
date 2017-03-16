@@ -50,7 +50,7 @@ class WeatherConditionController extends Controller
         $humidity_sensor = $request->get('humidity');
         $humidity_sensor = (int)$humidity_sensor;
 
-        $url = 'http://api.wunderground.com/api/2702e742f41cb897/conditions/q/TH/Bangkok.json';
+        $url = 'http://api.wunderground.com/api/2702e742f41cb897/conditions/q/TH/chanthaburi.json';
         $data = self::curlGetRequest($url);
         $weather_condition = [
             'temp' => $data['current_observation']['temp_c'],
@@ -68,7 +68,7 @@ class WeatherConditionController extends Controller
 
     public function getCurrentWeather()
     {
-        $url = 'http://api.wunderground.com/api/2702e742f41cb897/conditions/q/TH/Bangkok.json';
+        $url = 'http://api.wunderground.com/api/2702e742f41cb897/conditions/q/TH/chanthaburi.json';
         $data = self::curlGetRequest($url);
 
         $weather_condition = [

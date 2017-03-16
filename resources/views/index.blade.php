@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="jumbotron">
-        <h1>สภาพอากาศย้อนหลัง</h1>
+        <h1>History Weather</h1>
         @if(sizeof($weathers) > 0)
             <p>{{ $weathers[0]->date }} - {{ $weathers[sizeof($weathers) - 1]->date }}</p>
         @endif

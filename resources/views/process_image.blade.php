@@ -9,7 +9,7 @@
         <thead>
         <tr>
             <th>DateTime</th>
-            <th>Amount</th>
+            <th>Area</th>
             <th>Image</th>
         </tr>
         </thead>
