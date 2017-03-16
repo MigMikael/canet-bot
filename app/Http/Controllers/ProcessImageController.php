@@ -42,7 +42,7 @@ class ProcessImageController extends Controller
 
     public function store3(Request $request)
     {
-        $amount = $request-get('amount');
+        $amount = $request->get('amount');
         $process_image = [
             'amount' => $amount,
         ];

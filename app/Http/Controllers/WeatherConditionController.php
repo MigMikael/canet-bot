@@ -16,9 +16,14 @@ class WeatherConditionController extends Controller
 
     public function getImage($id)
     {
-        $wc = WeatherCondition::findOrFail($id);
-
-        return response($wc->image)->header('Content-Type', 'image/jpg');
+        if($id == 'last'){
+            $wc = WeatherCondition::all()->last();
+            return response($wc->image)->header('Content-Type', 'image/jpg');
+        }
+        else{
+            $wc = WeatherCondition::findOrFail($id);
+            return response($wc->image)->header('Content-Type', 'image/jpg');
+        }
     }
 
     public function getMediumImage($id)
@@ -52,8 +57,8 @@ class WeatherConditionController extends Controller
             'weather' => $data['current_observation']['weather'],
             'pressure' => $data['current_observation']['pressure_mb'],
             'humidity' => $data['current_observation']['relative_humidity'],
-            'humidity_sensor' => $humidity_sensor,
             'date' => $data['current_observation']['observation_time'],
+            'humidity_sensor' => $humidity_sensor,
             'image' => File::get($image)
         ];
 
