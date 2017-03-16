@@ -59,7 +59,7 @@ class BotController extends Controller
                             ],
                         ];
                     }
-                    elseif (strpos($text, 'อากาศ') !== false){
+                    elseif (strpos($text, 'รายงาน') !== false){
                         $condition = WeatherCondition::all()->last();
                         $messages1 = [
                             'type' => 'text',
@@ -83,8 +83,8 @@ class BotController extends Controller
 
                         $messages5 = [
                             'type' => 'image',
-                            'originalContentUrl' => 'https://canet-bot.herokuapp.com/api/bot/medium_image/'.$condition->id,
-                            'previewImageUrl' => 'https://canet-bot.herokuapp.com/api/bot/small_image/'.$condition->id
+                            'originalContentUrl' => 'https://canet-bot.herokuapp.com/api/durian_image/'.$condition->id,
+                            'previewImageUrl' => 'https://canet-bot.herokuapp.com/api/durian_image/'.$condition->id
                         ];
 
                         $data = [
