@@ -15,4 +15,11 @@
             <p>Day is 04 or 13</p>
         </div>
     </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">Get Durian Image</div>
+        <div class="panel-body">
+            <h3>http://canet-bot.herokuapp.com/api/durian_image/{id}</h3>
+        </div>
+    </div>
 @stop

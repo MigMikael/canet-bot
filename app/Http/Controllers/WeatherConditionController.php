@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 use App\WeatherCondition;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
-
+use Intervention\Image\Facades\Image;
 
 class WeatherConditionController extends Controller
 {
@@ -19,6 +19,24 @@ class WeatherConditionController extends Controller
         $wc = WeatherCondition::findOrFail($id);
 
         return response($wc->image)->header('Content-Type', 'image/jpg');
+    }
+
+    public function getMediumImage($id)
+    {
+        $wc = WeatherCondition::findOrFail($id);
+
+        $img = Image::make($wc->image)->resize(1024, 1024);
+
+        return $img->response('jpg');
+    }
+
+    public function getSmallImage($id)
+    {
+        $wc = WeatherCondition::findOrFail($id);
+
+        $img = Image::make($wc->image)->resize(240, 240);
+
+        return $img->response('jpg');
     }
 
     public function store(Request $request)
