@@ -63,7 +63,7 @@ class BotController extends Controller
                         $condition = WeatherCondition::all()->last();
                         $messages1 = [
                             'type' => 'text',
-                            'text' => 'ความชื้นของดิน '.$condition->humidity_sensor.' %'
+                            'text' => 'อุณหภูมิ '.$condition->temp.' C'
                         ];
 
                         $messages2 = [
@@ -78,7 +78,7 @@ class BotController extends Controller
 
                         $messages4 = [
                             'type' => 'text',
-                            'text' => 'ความชื้นในอากาศ '.$condition->humidity
+                            'text' => 'ความชื้นของดิน '.$condition->humidity_sensor.' %'
                         ];
 
                         $messages5 = [
