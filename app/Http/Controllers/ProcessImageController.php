@@ -28,6 +28,18 @@ class ProcessImageController extends Controller
         return response()->json(['msg' => 'store data complete']);
     }
 
+    public function store2(Request $request)
+    {
+        $amount = $request-get('amount');
+        $process_image = [
+            'amount' => $amount,
+        ];
+
+        ProcessImage::create($process_image);
+
+        return response()->json(['msg' => 'store data complete']);
+    }
+
     public function getImage($id)
     {
         $pi = ProcessImage::findOrFail($id);

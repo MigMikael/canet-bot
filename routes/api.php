@@ -28,3 +28,4 @@ Route::get('bot/medium_image/{id}', 'WeatherConditionController@getMediumImage')
 Route::get('bot/small_image/{id}', 'WeatherConditionController@getSmallImage');
 
 Route::post('process_image', 'ProcessImageController@store');
+Route::post('process_image2', 'ProcessImageController@store2');
