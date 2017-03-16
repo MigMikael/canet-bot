@@ -20,3 +20,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::post('bot', 'BotController@handleBot');
 
 Route::post('durian_data', 'WeatherConditionController@store');
+
+Route::get('durian_image/{id}', 'WeatherConditionController@getImage');

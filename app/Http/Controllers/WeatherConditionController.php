@@ -7,6 +7,19 @@ use Illuminate\Http\Request;
 
 class WeatherConditionController extends Controller
 {
+    public function index()
+    {
+        $weathers = WeatherCondition::all();
+        return view('current', ['weathers' => $weathers]);
+    }
+
+    public function getImage($id)
+    {
+        $weather_condition = WeatherCondition::findOrFail($id);
+
+        return response($weather_condition->image)->header('Content-Type', 'image/jpg');
+    }
+
     public function store(Request $request)
     {
         $image = $request->file('image');
