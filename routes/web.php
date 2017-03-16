@@ -17,6 +17,7 @@ Route::get('/', function () {
 
 Route::get('weather', 'WeatherController@index');
 Route::get('condition', 'WeatherConditionController@index');
+Route::get('forecast', 'WeatherForecastController@index');
 Route::get('analyze', 'ProcessImageController@index');
 Route::get('api', 'WeatherController@apiDoc');
 Route::get('graph', 'WeatherController@graph');
@@ -24,4 +25,8 @@ Route::get('graph', 'WeatherController@graph');
 Route::get('get_weather', 'WeatherController@getWeather');
 Route::get('get_daily_weather/{day}', 'WeatherController@getDailyWeather');
 
+
 Route::get('get_current_weather', 'WeatherConditionController@getCurrentWeather');
+Route::get('get_forecast_weather', 'WeatherForecastController@getForecastWeather');
+
+Route::get('get_current_date', 'WeatherController@getCurrentDate');

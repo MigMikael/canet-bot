@@ -25,7 +25,7 @@ class CreateWeatherConditionTable extends Migration
         });
 
         $sql = 'ALTER TABLE `weathers_condition` ADD `image` MEDIUMBLOB';
-        DB::connection()->getPdo()->exec($sql);
+        DB ::connection()->getPdo()->exec($sql);
     }
 
     /**

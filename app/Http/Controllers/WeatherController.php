@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Weather;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Log;
 class WeatherController extends Controller
@@ -41,16 +42,19 @@ class WeatherController extends Controller
 
     public function getWeather()
     {
-        $days = [];
-        $days[0] = 'http://api.wunderground.com/api/2702e742f41cb897/history_20170310/q/TH/chanthaburi.json';
-        $days[1] = 'http://api.wunderground.com/api/2702e742f41cb897/history_20170311/q/TH/chanthaburi.json';
-        $days[2] = 'http://api.wunderground.com/api/2702e742f41cb897/history_20170312/q/TH/chanthaburi.json';
-        $days[3] = 'http://api.wunderground.com/api/2702e742f41cb897/history_20170313/q/TH/chanthaburi.json';
-        $days[4] = 'http://api.wunderground.com/api/2702e742f41cb897/history_20170314/q/TH/chanthaburi.json';
+        $current = Carbon::now();
 
-        foreach ($days as $day){
-            $data = self::curlGetRequest($day);
+        for($i = 4; $i >= 0; $i--){
+            $day = $current->previous($i);
+            $string = $day->toDateTimeString();
 
+            $temp = explode(' ',$string);
+            $date = $temp[0];
+            $date = str_replace('-', '', $date);
+
+            $url = 'http://api.wunderground.com/api/2702e742f41cb897/history_'.$date.'/q/TH/chanthaburi.json';
+
+            $data = self::curlGetRequest($url);
             $weather = [
                 'temp' => $data['history']['dailysummary'][0]['meantempm'],
                 'max_temp' => $data['history']['dailysummary'][0]['maxtempm'],
@@ -60,9 +64,8 @@ class WeatherController extends Controller
 
             Weather::create($weather);
         }
-
-        $allWeather = Weather::all();
-        return $allWeather;
+        $weather = Weather::orderBy('id', 'desc')->take(5)->get();
+        return $weather;
     }
     
     public function curlGetRequest($url)
@@ -79,5 +82,18 @@ class WeatherController extends Controller
         curl_close($curl);
 
         return $data;
+    }
+
+    public function getCurrentDate()
+    {
+        $current = Carbon::now();
+
+        $two = $current->previous(2);
+        $string = $two->toDateTimeString();
+
+        $temp = explode(' ',$string);
+        $date = $temp[0];
+        $date = str_replace('-', '', $date);
+        return $date;
     }
 }
