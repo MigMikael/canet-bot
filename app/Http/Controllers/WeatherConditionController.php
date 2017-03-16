@@ -7,6 +7,27 @@ use Illuminate\Http\Request;
 
 class WeatherConditionController extends Controller
 {
+    public function store(Request $request)
+    {
+        $image = $request->file('image');
+        $humidity_sensor = $request->get('humidity');
+        $humidity_sensor = (int)$humidity_sensor;
+
+        $url = 'http://api.wunderground.com/api/2702e742f41cb897/conditions/q/TH/Bangkok.json';
+        $data = self::curlGetRequest($url);
+        $weather_condition = [
+            'temp' => $data['current_observation']['temp_c'],
+            'weather' => $data['current_observation']['weather'],
+            'pressure' => $data['current_observation']['pressure_mb'],
+            'humidity_sensor' => $humidity_sensor,
+            'date' => $data['current_observation']['observation_time'],
+            'image' => $image
+        ];
+
+        WeatherCondition::create($weather_condition);
+        return response()->json(['msg' => 'store data complete']);
+    }
+
     public function getCurrentWeather()
     {
         $url = 'http://api.wunderground.com/api/2702e742f41cb897/conditions/q/TH/Bangkok.json';
