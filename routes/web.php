@@ -21,3 +21,5 @@ Route::get('graph', 'WeatherController@graph');
 
 Route::get('get_weather', 'WeatherController@getWeather');
 Route::get('get_daily_weather/{day}', 'WeatherController@getDailyWeather');
+
+Route::get('get_current_weather', 'WeatherConditionController@getCurrentWeather');

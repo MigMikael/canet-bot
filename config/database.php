@@ -32,7 +32,7 @@
     ],
 ];*/
 
-$url = parse_url(getenv("DATABASE_URL"));
+/*$url = parse_url(getenv("DATABASE_URL"));
 $host = $url["host"];
 $username = $url["user"];
 $password = $url["pass"];
@@ -64,9 +64,9 @@ return [
             'database' => 0,
         ],
     ],
-];
+];*/
 
-/*$url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+$url = parse_url(getenv("CLEARDB_DATABASE_URL"));
 $host = $url["host"];
 $username = $url["user"];
 $password = $url["pass"];
@@ -100,4 +100,4 @@ return [
             'database' => 0,
         ],
     ],
-];*/
+];
