@@ -25,7 +25,7 @@
                 <td>{!! $weather->weather !!}</td>
                 <td>{!! $weather->pressure !!}</td>
                 <td>{!! $weather->humidity_sensor !!}</td>
-                <td>{!! $weather->last_update !!}</td>
+                <td>{!! $weather->date !!}</td>
                 <td>
                     <a href="{{ url('api/durian_image/'.$weather->id) }}">view</a>
                 </td>

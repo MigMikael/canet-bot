@@ -1,9 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use App\WeatherCondition;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
+
 
 class WeatherConditionController extends Controller
 {
@@ -34,7 +35,7 @@ class WeatherConditionController extends Controller
             'pressure' => $data['current_observation']['pressure_mb'],
             'humidity_sensor' => $humidity_sensor,
             'date' => $data['current_observation']['observation_time'],
-            'image' => $image
+            'image' => File::get($image)
         ];
 
         WeatherCondition::create($weather_condition);
