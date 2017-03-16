@@ -25,3 +25,5 @@ Route::get('durian_image/{id}', 'WeatherConditionController@getImage');
 
 Route::get('bot/medium_image/{id}', 'WeatherConditionController@getMediumImage');
 Route::get('bot/small_image/{id}', 'WeatherConditionController@getSmallImage');
+
+Route::post('process_image', 'ProcessImageController@store');
