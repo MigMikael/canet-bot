@@ -9,7 +9,8 @@ class ProcessImageController extends Controller
 {
     public function index()
     {
-
+        $process_images = ProcessImage::all();
+        return view('process_image', ['process_image' => $process_images]);
     }
 
     public function store(Request $request)
@@ -25,5 +26,11 @@ class ProcessImageController extends Controller
         ProcessImage::create($process_image);
 
         return response()->json(['msg' => 'store data complete']);
+    }
+
+    public function getImage($id)
+    {
+        $pi = ProcessImage::findOrFail($id);
+        return response($pi->image)->header('Content-Type', 'image/jpg');
     }
 }

@@ -17,6 +17,7 @@ Route::get('/', function () {
 
 Route::get('weather', 'WeatherController@index');
 Route::get('condition', 'WeatherConditionController@index');
+Route::get('analyze', 'ProcessImageController@index');
 Route::get('api', 'WeatherController@apiDoc');
 Route::get('graph', 'WeatherController@graph');
 

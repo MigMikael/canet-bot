@@ -19,6 +19,7 @@
         <ul class="nav navbar-nav">
             <li @if(Request::is('weather')) class='active' @endif><a href="{{ url('/') }}">Home</a></li>
             <li @if(Request::is('condition')) class='active' @endif><a href="{{ url('condition') }}">Condition</a></li>
+            <li @if(Request::is('analyze')) class='active' @endif><a href="{{ url('analyze') }}">Analyze</a></li>
             <li @if(Request::is('api')) class='active' @endif><a href="{{ url('api') }}">API</a></li>
             <li @if(Request::is('graph')) class='active' @endif><a href="{{ url('graph') }}">Graph</a></li>
         </ul>
