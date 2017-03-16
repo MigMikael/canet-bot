@@ -12,6 +12,7 @@ class WeatherCondition extends Model
         'temp',
         'weather',
         'pressure',
+        'humidity',
         'humidity_sensor',
         'date',
         'image'

@@ -18,6 +18,7 @@ class CreateWeatherConditionTable extends Migration
             $table->float('temp');
             $table->string('weather');
             $table->float('pressure');
+            $table->string('humidity');
             $table->float('humidity_sensor')->default(0);
             $table->string('date');
             $table->timestamps();

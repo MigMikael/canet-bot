@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\WeatherCondition;
 use Illuminate\Http\Request;
 use App\Weather;
 class BotController extends Controller
@@ -58,39 +59,42 @@ class BotController extends Controller
                             ],
                         ];
                     }
-                    /*elseif (strpos($text, 'รูปต้นไม้') !== false){
-                        $plant = Plant::all()->last();
-
+                    elseif (strpos($text, 'เหนื่อยไหม') !== false){
+                        $condition = WeatherCondition::all()->last();
                         $messages1 = [
-                            'type' => 'image',
-                            'originalContentUrl' => 'https://ceresweather.herokuapp.com/api/bot/medium_original_image/'.$plant->id,
-                            'previewImageUrl' => 'https://ceresweather.herokuapp.com/api/bot/small_original_image/'.$plant->id
+                            'type' => 'text',
+                            'text' => 'ความชื้นของดิน '.$condition->humidity_sensor.' %'
+                        ];
+
+                        $messages2 = [
+                            'type' => 'text',
+                            'text' => 'สภาพอากาศ '.$condition->weather
+                        ];
+
+                        $messages3 = [
+                            'type' => 'text',
+                            'text' => 'ความกดอากาศ '.$condition->pressure.' pha'
+                        ];
+
+                        $messages4 = [
+                            'type' => 'text',
+                            'text' => 'ความชื้นในอากาศ '.$condition->humidity
                         ];
 
                         $data = [
                             'replyToken' => $replyToken,
                             'messages' => [
-                                $messages1
+                                $messages1,
+                                $messages2,
+                                $messages3,
+                                $messages4,
                             ],
                         ];
                     }
                     else {
                         $messages1 = [
                             'type' => 'text',
-                            'text' => 'พูดอะไรเนี่ย เราฟังไม่รู้เรื่องเลย'
-                        ];
-
-                        $data = [
-                            'replyToken' => $replyToken,
-                            'messages' => [
-                                $messages1
-                            ],
-                        ];
-                    }*/
-                    else {
-                        $messages1 = [
-                            'type' => 'text',
-                            'text' => 'ขอโทษเราไม่เข้าใจที่ท่านพูด'
+                            'text' => 'เราเหนื่อยมาก เรางง'
                         ];
 
                         $data = [

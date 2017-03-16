@@ -33,6 +33,7 @@ class WeatherConditionController extends Controller
             'temp' => $data['current_observation']['temp_c'],
             'weather' => $data['current_observation']['weather'],
             'pressure' => $data['current_observation']['pressure_mb'],
+            'humidity' => $data['current_observation']['relative_humidity'],
             'humidity_sensor' => $humidity_sensor,
             'date' => $data['current_observation']['observation_time'],
             'image' => File::get($image)
