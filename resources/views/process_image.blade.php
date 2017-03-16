@@ -17,7 +17,7 @@
         @foreach($process_images as $process_image)
             <tr>
                 <td>{!! $process_image->created_at !!}</td>
-                <td>{!! $process_image->amount !!}</td>
+                <td>{!! $process_image->area !!}</td>
                 <td>
                     <a href="{{ url('api/process_image/'.$process_image->id) }}">view</a>
                 </td>

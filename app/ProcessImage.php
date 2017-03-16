@@ -8,5 +8,5 @@ class ProcessImage extends Model
 {
     public $timestamps = true;
     protected $table = 'process_image';
-    protected $fillable = ['amount', 'image'];
+    protected $fillable = ['area', 'image'];
 }

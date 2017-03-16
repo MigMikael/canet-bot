@@ -15,7 +15,7 @@ class CreateImgProcessTable extends Migration
     {
         Schema::create('process_image', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('amount')->default(0);
+            $table->integer('area')->default(0);
             $table->timestamps();
         });
 
