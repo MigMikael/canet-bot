@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\ProcessImage;
 use App\WeatherCondition;
 use Illuminate\Http\Request;
 use App\Weather;
@@ -61,6 +62,7 @@ class BotController extends Controller
                     }
                     elseif (strpos($text, 'รายงาน') !== false){
                         $condition = WeatherCondition::all()->last();
+                        $process_image = ProcessImage::all()->last();
                         $messages1 = [
                             'type' => 'text',
                             'text' => 'อุณหภูมิ '.$condition->temp.' C'
@@ -83,8 +85,8 @@ class BotController extends Controller
 
                         $messages5 = [
                             'type' => 'image',
-                            'originalContentUrl' => 'https://canet-bot.herokuapp.com/api/durian_image/'.$condition->id,
-                            'previewImageUrl' => 'https://canet-bot.herokuapp.com/api/durian_image/'.$condition->id
+                            'originalContentUrl' => 'https://canet-bot.herokuapp.com/api/process_image/'.$process_image->id,
+                            'previewImageUrl' => 'https://canet-bot.herokuapp.com/api/process_image/'.$process_image->id
                         ];
 
                         $data = [
