@@ -16,9 +16,9 @@ class WeatherConditionController extends Controller
 
     public function getImage($id)
     {
-        $weather_condition = WeatherCondition::findOrFail($id);
+        $wc = WeatherCondition::findOrFail($id);
 
-        return response($weather_condition->image)->header('Content-Type', 'image/jpg');
+        return response($wc->image)->header('Content-Type', 'image/jpg');
     }
 
     public function store(Request $request)
