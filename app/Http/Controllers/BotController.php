@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\ProcessImage;
 use App\WeatherCondition;
+use App\WeatherForecast;
 use Illuminate\Http\Request;
 use App\Weather;
 class BotController extends Controller
@@ -21,7 +22,7 @@ class BotController extends Controller
                     $text = $event['message']['text'];
                     $replyToken = $event['replyToken'];
 
-                    if (strpos($text, 'เหนื่อยไหม') !== false) {
+                    if (strpos($text, 'ประวัติ') !== false) {
                         $weathers = Weather::orderBy('id', 'desc')->take(5)->get();
 
                         $messages1 = [
@@ -100,16 +101,61 @@ class BotController extends Controller
                             ],
                         ];
                     }
-                    else {
+                    elseif (strpos($text, 'อนาคต') !== false){
+                        $forecasts = WeatherForecast::orderBy('id', 'desc')->take(5)->get();
+
                         $messages1 = [
                             'type' => 'text',
-                            'text' => 'เราเหนื่อยมาก เรางง'
+                            'text' => 'วันที่ '.$forecasts[4]->date.'/ Max Temp = '.$forecasts[4]->max_temp.' C/ Min Temp = '.$forecasts[4]->min_temp.' C'
+                        ];
+
+                        $messages2 = [
+                            'type' => 'text',
+                            'text' => 'วันที่ '.$forecasts[3]->date.'/ Max Temp = '.$forecasts[3]->max_temp.' C/ Min Temp = '.$forecasts[3]->min_temp.' C'
+                        ];
+
+                        $messages3 = [
+                            'type' => 'text',
+                            'text' => 'วันที่ '.$forecasts[2]->date.'/ Max Temp = '.$forecasts[2]->max_temp.' C/ Min Temp = '.$forecasts[2]->min_temp.' C'
+                        ];
+
+                        $messages4 = [
+                            'type' => 'text',
+                            'text' => 'วันที่ '.$forecasts[1]->date.'/ Max Temp = '.$forecasts[1]->max_temp.' C/ Min Temp = '.$forecasts[1]->min_temp.' C'
+                        ];
+
+                        $messages5 = [
+                            'type' => 'text',
+                            'text' => 'วันที่ '.$forecasts[0]->date.'/ Max Temp = '.$forecasts[0]->max_temp.' C/ Min Temp = '.$forecasts[0]->min_temp.' C'
                         ];
 
                         $data = [
                             'replyToken' => $replyToken,
                             'messages' => [
                                 $messages1,
+                                $messages2,
+                                $messages3,
+                                $messages4,
+                                $messages5
+                            ],
+                        ];
+                    }
+                    else {
+                        $messages1 = [
+                            'type' => 'text',
+                            'text' => 'งงเด้ งงเด้ !'
+                        ];
+
+                        $messages2 = [
+                            'type' => 'text',
+                            'text' => 'อ่าวผิด นั่นมันจิงโจ้'
+                        ];
+
+                        $data = [
+                            'replyToken' => $replyToken,
+                            'messages' => [
+                                $messages1,
+                                $messages2
                             ],
                         ];
                     }
